@@ -2,8 +2,11 @@
 
 const handleRegister = (req, res, knex, bcrypt)=> {
   const {name, email, password} = req.body;
+  if(!name || !email || ! password){
+    return res.status(400).json('incorrect validation');
+  }
+  
   const hash = bcrypt.hashSync(password);
-
   knex.transaction(trx => {
     trx.insert({
       hash:hash,
