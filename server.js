@@ -34,6 +34,10 @@ app.get('/profile/:id', (req, res)=> { profile.handleProfileGet(req,res, knex)})
 
 app.put('/image', (req, res)=> {image.handleImage(req,res, knex)})
 
+app.post('/imageUrl', (req, res)=> {image.handleAPICall(req,res)})
+
+
+
 app.listen(3000, ()=>{
   console.log('app is running on port 3000');
 })
